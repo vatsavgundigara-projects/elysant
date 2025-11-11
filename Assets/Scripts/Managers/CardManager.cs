@@ -22,7 +22,7 @@ public class CardManager : MonoBehaviour
             cardIds.Add(i);
             cardIds.Add(i);
         }
-
+        Shuffle(cardIds);
 
         for (int i = 0; i < cardIds.Count; i++)
         {
@@ -31,6 +31,14 @@ public class CardManager : MonoBehaviour
             card.CardId = cardIds[i];
             card.FrontSprite = cardImages[cardIds[i]];
             cards.Add(card);
+        }
+    }
+    private void Shuffle(List<int> list)
+    {
+        for (int i = 0; i < list.Count; i++)
+        {
+            int randomIndex = Random.Range(0, list.Count);
+            (list[i], list[randomIndex]) = (list[randomIndex], list[i]);
         }
     }
 }

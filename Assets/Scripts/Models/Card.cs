@@ -22,7 +22,7 @@ public class Card : MonoBehaviour, IFlippable, IMatchable
     }
     private void OnMouseDown()
     {
-        Flip();
+        //Flip();
     }
     public bool CheckMatch(Card otherCard)
     {

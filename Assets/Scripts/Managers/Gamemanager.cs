@@ -29,8 +29,28 @@ public class GameManager : MonoBehaviour
             card.Flip();
             turns++;
             uiManager.UpdateTurns(turns);
-
+            StartCoroutine(CheckMatch());
         }
     }
+    private IEnumerator CheckMatch()
+    {
+        yield return new WaitForSeconds(1f);
 
+        if (firstCard.CheckMatch(secondCard))
+        {
+            matches++;
+            uiManager.UpdateMatches(matches);
+            // Optionally disable matched cards
+            firstCard.gameObject.SetActive(false);
+            secondCard.gameObject.SetActive(false);
+        }
+        else
+        {
+            firstCard.Flip();
+            secondCard.Flip();
+        }
+
+        firstCard = null;
+        secondCard = null;
+    }
 }
