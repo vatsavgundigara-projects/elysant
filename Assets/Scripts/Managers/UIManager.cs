@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI matchesText;
     [SerializeField] private TextMeshProUGUI turnsText;
     [SerializeField] private TextMeshProUGUI levelText;
-
+    [SerializeField] private GameObject levelCompletePanel ;
 
     public void UpdateLevel(string count)
     {

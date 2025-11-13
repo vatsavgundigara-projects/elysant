@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     private Card firstCard, secondCard;
     private int matches, turns;
+    private int currentLevel;
     [SerializeField] private LevelDatabase levelDatabase;    
     [SerializeField] private UIManager uiManager;
     [SerializeField] private CardManager cardManager;
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        // Load last saved level or default to level 0
+        currentLevel = PlayerPrefsHandler.GetCurrentLevel();
         LevelData levelData = levelDatabase.GetLevel(0);
         GenerateLevel(levelData.totalCards , levelData.rows , levelData.columns);
         uiManager.UpdateLevel(levelData.levelNo);
@@ -69,5 +72,13 @@ public class GameManager : MonoBehaviour
 
         firstCard = null;
         secondCard = null;
+    }
+
+    public void OnLevelCompleted()
+    {
+        // Increase and save current level
+        currentLevel++;
+        PlayerPrefsHandler.SetCurrentLevel(currentLevel);
+        Debug.Log($"Level {currentLevel} completed, saving progress...");
     }
 }
