@@ -6,16 +6,20 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI matchesText;
     [SerializeField] private TextMeshProUGUI turnsText;
+    [SerializeField] private TextMeshProUGUI levelText;
 
 
-
+    public void UpdateLevel(string count)
+    {
+        levelText.text = "Level : "+count;
+    }
     public void UpdateMatches(int count)
     {
-        matchesText.text = $"Matches: {count}";
+        matchesText.text = $" {count}";
     }
 
     public void UpdateTurns(int count)
     {
-        turnsText.text = $"Turns: {count}";
+        turnsText.text = $" {count}";
     }
 }

@@ -11,8 +11,8 @@ public class GridLayoutStrategy : ILayoutStrategy
             return;
         }
 
-        float spacing = 10f;
-        float cardSize = 100f;
+        float spacing = 20f;
+        float cardSize = 125f;
 
         // Calculate total grid size
         float totalWidth = columns * cardSize + (columns - 1) * spacing;
@@ -20,6 +20,22 @@ public class GridLayoutStrategy : ILayoutStrategy
 
         Vector2 startPos = new Vector2(-totalWidth / 2 + cardSize / 2, totalHeight / 2 - cardSize / 2);
 
-        
+        int index = 0;
+        for (int r = 0; r < rows; r++)
+        {
+            for (int c = 0; c < columns; c++)
+            {
+                if (index >= cards.Count) return;
+
+                RectTransform rect = cards[index].GetComponent<RectTransform>();
+                rect.SetParent(parent);
+                rect.anchoredPosition = new Vector2(
+                    startPos.x + c * (cardSize + spacing),
+                    startPos.y - r * (cardSize + spacing)
+                );
+                rect.localScale = Vector3.one;
+                index++;
+            }
+        }
     }
 }

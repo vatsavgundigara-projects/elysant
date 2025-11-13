@@ -5,19 +5,28 @@ public class CardManager : MonoBehaviour
 {
     [SerializeField] private GameObject cardPrefab;
     [SerializeField] private Transform gridParent;
+    public  SpriteLibrary spriteLibrary;
     [SerializeField] private List<Sprite> cardImages;
 
-    private List<Card> cards = new List<Card>();
+    private List<GameObject> cards = new List<GameObject>();
+    [SerializeField] private LayoutManager layoutManager;
 
+    private void Awake()
+    {
+        for (int i = 0; i < spriteLibrary.spriteItems.Count; i++)
+        {
+            cardImages.Add(spriteLibrary.GetSpriteByName((i+1).ToString()));
+        }
+    }
     void Start()
     {
-        GenerateCards();
+        
     }
 
-    private void GenerateCards()
+    public void GenerateCards(int totalCards, int rows, int columns)
     {
         List<int> cardIds = new List<int>();
-        for (int i = 0; i < cardImages.Count; i++)
+        for (int i = 0; i < (totalCards/2); i++)
         {
             cardIds.Add(i);
             cardIds.Add(i);
@@ -30,8 +39,10 @@ public class CardManager : MonoBehaviour
             Card card = newCard.GetComponent<Card>();
             card.CardId = cardIds[i];
             card.FrontSprite = cardImages[cardIds[i]];
-            cards.Add(card);
+            cards.Add(card.gameObject);
         }
+
+        layoutManager.ArrangeCards(cards, rows, columns);
     }
     private void Shuffle(List<int> list)
     {

@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using UnityEditorInternal;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,13 +9,28 @@ public class GameManager : MonoBehaviour
 
     private Card firstCard, secondCard;
     private int matches, turns;
-
+    [SerializeField] private LevelDatabase levelDatabase;    
     [SerializeField] private UIManager uiManager;
+    [SerializeField] private CardManager cardManager;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+
+
+    }
+
+    private void Start()
+    {
+        LevelData levelData = levelDatabase.GetLevel(0);
+        GenerateLevel(levelData.totalCards , levelData.rows , levelData.columns);
+        uiManager.UpdateLevel(levelData.levelNo);
+    }
+
+    private void GenerateLevel(int totalCards, int rows, int columns)
+    {
+        cardManager.GenerateCards( totalCards , rows , columns);
     }
 
     public void SelectCard(Card card)
