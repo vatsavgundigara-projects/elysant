@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6734c6b53abc71f4493bd6e80de9f64a, type: 3}
   m_Name: SoundLibrary
   m_EditorClassIdentifier: 
-  soundItems: []
+  soundItems:
+  - soundName: BG
+    clip: {fileID: 8300000, guid: 232d6ad6b435b1948ae82bf066f02e08, type: 3}
+  - soundName: Click
+    clip: {fileID: 8300000, guid: fbdedaa888c5cd54a899139443eeb289, type: 3}

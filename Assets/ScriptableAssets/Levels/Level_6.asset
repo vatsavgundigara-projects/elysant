@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d5ab34056cccd849a40f83a7b69e0d9, type: 3}
   m_Name: Level_6
   m_EditorClassIdentifier: 
-  totalCards: 14
-  rows: 7
-  columns: 2
+  totalCards: 16
+  rows: 4
+  columns: 4
   levelNo: 6
   difficulty: 1

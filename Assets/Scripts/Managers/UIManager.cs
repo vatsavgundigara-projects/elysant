@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,8 +8,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI matchesText;
     [SerializeField] private TextMeshProUGUI turnsText;
     [SerializeField] private TextMeshProUGUI levelText;
-    [SerializeField] private GameObject levelCompletePanel ;
-
+     public  BasePanel levelCompletePanel ;
+    public GameObject touchProtector;
     public void UpdateLevel(string count)
     {
         levelText.text = "Level : "+count;
@@ -22,4 +23,6 @@ public class UIManager : MonoBehaviour
     {
         turnsText.text = $" {count}";
     }
+
+    
 }

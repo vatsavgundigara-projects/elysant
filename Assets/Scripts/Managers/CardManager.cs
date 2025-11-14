@@ -4,7 +4,7 @@ using UnityEngine;
 public class CardManager : MonoBehaviour
 {
     [SerializeField] private GameObject cardPrefab;
-    [SerializeField] private Transform gridParent;
+    public Transform gridParent;
     public  SpriteLibrary spriteLibrary;
     [SerializeField] private List<Sprite> cardImages;
 
